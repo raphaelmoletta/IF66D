@@ -12,17 +12,18 @@ void queue_append (queue_t **queue, queue_t *elem)
 {
     if(elem != NULL && elem->next == NULL && elem->prev == NULL)
     {
-        if (queue == NULL)
+        if (queue[0] == NULL)
         {
-            queue[0]->prev->next = elem;
+            queue[0] = elem;
             queue[0]->prev = elem;
-            elem->next = queue[0];
+            queue[0]->next = elem;
         } 
         else
         {
-            queue[0] = elem;
-            elem->next = elem;
-            elem->prev = elem;
+            elem->next = queue[0];
+            elem->prev = queue[0]->prev;
+            queue[0]->prev->next = elem;
+            queue[0]->prev = elem;
         }
     }
 }
@@ -47,6 +48,8 @@ queue_t *queue_remove (queue_t **queue, queue_t *elem)
 
 int queue_size (queue_t *queue)
 {
+    if(queue == NULL)
+        return 0;
     int i = 1;
     queue_t *q = queue->next;
     while(q != queue)
