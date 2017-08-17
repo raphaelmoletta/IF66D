@@ -39,6 +39,42 @@ void queue_append (queue_t **queue, queue_t *elem)
 
 queue_t *queue_remove (queue_t **queue, queue_t *elem)
 {
+    if(elem == NULL)
+        return NULL;
+    
+
+    
+    if(queue[0]->next == NULL)
+        return NULL;
+    
+    if(&queue == NULL)
+        return NULL;
+    
+    queue_t *current = queue[0]; 
+    
+    int i;
+    i = 0;
+    
+    while (current != elem){
+        current = current->next;
+    
+        if(current == queue[0])
+            return NULL; 
+    }
+    
+    
+    if(current == NULL)
+        return NULL;
+    
+    
+    current->next->prev = current->prev;
+    current->prev->next = current->next;
+    current->next = NULL;
+    current->prev = NULL;
+    
+    
+    return current;
+    
     
 }
 
