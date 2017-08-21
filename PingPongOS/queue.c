@@ -44,37 +44,80 @@ queue_t *queue_remove (queue_t **queue, queue_t *elem)
     
 
     
-    if(queue[0]->next == NULL)
-        return NULL;
+
     
     if(&queue == NULL)
         return NULL;
+
+	
     
-    queue_t *current = queue[0]; 
+    queue_t *curr;
+	curr = queue[0];
+	
+	while(curr != elem){
+		curr = curr->next;
+		if(curr == elem)
+			break;
+		if(curr == queue[0])
+			return NULL; 
+
+	}
+
+
+
+
+	if(elem-> next == *queue && elem == *queue){
+			*queue = NULL;
+			elem->next = NULL;
+			elem->prev = NULL;
+		
+			return elem;
+		
+	}else if(elem == *queue){
+
+		elem->prev->next = elem->next;	
+	 	elem->next->prev = elem->prev;
+		*queue = elem->next;
+
+		elem->next = NULL;
+   		elem->prev = NULL;
+		
+		return elem;
+
+
+
+	}else{     
+		    elem->next->prev = elem->prev;
+		    elem->prev->next = elem->next;
+		    elem->next = NULL;
+		    elem->prev = NULL;
+		  
     
-    int i;
-    i = 0;
+    	return elem;
+
+	}
+
+
+
+
+
+
+
+return elem;
+	
+    /*
+    if(elem == queue[0])
+	if(queue != NULL)
+	queue = &elem->next;	
     
-    while (current != elem){
-        current = current->next;
-    
-        if(current == queue[0])
-            return NULL; 
-    }
+    elem->next->prev = elem->prev;
+    elem->prev->next = elem->next;
+    elem->next = NULL;
+    elem->prev = NULL;
     
     
-    if(current == NULL)
-        return NULL;
-    
-    
-    current->next->prev = current->prev;
-    current->prev->next = current->next;
-    current->next = NULL;
-    current->prev = NULL;
-    
-    
-    return current;
-    
+    return elem;
+    */
     
 }
 
@@ -107,13 +150,21 @@ int queue_size (queue_t *queue)
 
 void queue_print (char *name, queue_t *queue, void print_elem (void*) )
 {
-    if(queue == NULL)
-        return;
-    queue_t *q = queue;
-    do
-    {
-        print_elem(name);
-        q = queue->next;
-    }
-    while(q != queue);
+	printf("[");
+
+   	if(queue == NULL)
+		{printf("]");}
+   	 else{  	
+		    queue_t *q = queue;
+		    do
+		    {
+			print_elem(q);
+			q = q->next;
+		    }
+		    while(q != queue);
+		    printf("]");
+
+	}
+
+  	
 }
