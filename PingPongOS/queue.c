@@ -39,22 +39,18 @@ void queue_append (queue_t **queue, queue_t *elem)
 
 queue_t *queue_remove (queue_t **queue, queue_t *elem)
 {
+
+// "*queue" aponta para o queue[0], alterando o conteudo aqui, altera-se quem é queue[0]
     if(elem == NULL)
         return NULL;
     
-
-    
-
-    
-    if(&queue == NULL)
+    if(&queue == NULL)/*testes de entrada*/
         return NULL;
-
-	
     
     queue_t *curr;
 	curr = queue[0];
 	
-	while(curr != elem){
+	while(curr != elem){/*verificar se o elemento está no vetor*/
 		curr = curr->next;
 		if(curr == elem)
 			break;
@@ -66,14 +62,14 @@ queue_t *queue_remove (queue_t **queue, queue_t *elem)
 
 
 
-	if(elem-> next == *queue && elem == *queue){
-			*queue = NULL;
+	if(elem-> next == *queue && elem == *queue){/*verifica se o elemento é o primeiro e unico na*/
+			*queue = NULL;		    /*fila*/	
 			elem->next = NULL;
 			elem->prev = NULL;
 		
 			return elem;
 		
-	}else if(elem == *queue){
+	}else if(elem == *queue){/*se é o primeiro e não unico*/
 
 		elem->prev->next = elem->next;	
 	 	elem->next->prev = elem->prev;
@@ -86,7 +82,7 @@ queue_t *queue_remove (queue_t **queue, queue_t *elem)
 
 
 
-	}else{     
+	}else{/*se não é o primeiro*/
 		    elem->next->prev = elem->prev;
 		    elem->prev->next = elem->next;
 		    elem->next = NULL;
@@ -103,9 +99,9 @@ queue_t *queue_remove (queue_t **queue, queue_t *elem)
 
 
 
-return elem;
+return NULL; /*se não entrou em algum dos casos, dá erro*/
 	
-    /*
+    /*funcionamento basico, obsoleto*/
     if(elem == queue[0])
 	if(queue != NULL)
 	queue = &elem->next;	
@@ -129,6 +125,7 @@ int queue_size (queue_t *queue)
 {
     if(queue == NULL)
         return 0;
+
     int i = 1;
     queue_t *q = queue->next;
     while(q != queue)
@@ -149,7 +146,7 @@ int queue_size (queue_t *queue)
 // void print_elem (void *ptr) ; // ptr aponta para o elemento a imprimir
 
 void queue_print (char *name, queue_t *queue, void print_elem (void*) )
-{
+{/*printa "[", se o vetor não for nulo, print_elem até que complete-se o ciclo (a lista é fechada)*/
 	printf("[");
 
    	if(queue == NULL)
