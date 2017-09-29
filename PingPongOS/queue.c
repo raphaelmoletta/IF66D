@@ -113,7 +113,6 @@ return NULL; /*se não entrou em algum dos casos, dá erro*/
     
     
     return elem;
-    */
     
 }
 

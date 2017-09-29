@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/PingPongOS/build/
+/PingPongOS/dist/
+/Tarefa3/build/
+/Tarefa3/dist/
+/TarefaP2/build/
+/TarefaP2/dist/

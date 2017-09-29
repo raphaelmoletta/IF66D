@@ -2,27 +2,25 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
-                   displayName="Arquivos de Cabeçalho"
+                   displayName="Header Files"
                    projectFiles="true">
-      <itemPath>queue.h</itemPath>
-    </logicalFolder>
-    <logicalFolder name="SourceFiles"
-                   displayName="Arquivos de Código-Fonte"
-                   projectFiles="true">
-      <itemPath>queue.c</itemPath>
-      <itemPath>testefila.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
-                   displayName="Arquivos de Recurso"
+                   displayName="Resource Files"
                    projectFiles="true">
     </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Ex1.c</itemPath>
+    </logicalFolder>
     <logicalFolder name="TestFiles"
-                   displayName="Arquivos de Teste"
+                   displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
-                   displayName="Arquivos Importantes"
+                   displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
@@ -41,11 +39,7 @@
           <standard>3</standard>
         </cTool>
       </compileType>
-      <item path="queue.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="queue.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="testefila.c" ex="false" tool="0" flavor2="0">
+      <item path="Ex1.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -69,11 +63,7 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="queue.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="queue.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="testefila.c" ex="false" tool="0" flavor2="0">
+      <item path="Ex1.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>
